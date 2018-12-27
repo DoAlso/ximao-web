@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { ContainerComponent } from './container/container.component';
+import { ContainerComponent } from './component/container/container.component';
 
 registerLocaleData(en);
 
