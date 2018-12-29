@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Menu} from '../../model/menu/Menu';
+import {Component, OnInit} from '@angular/core';
+import {Menu} from '../../model/menu';
 import {MenuService} from '../../service/menu/menu.service';
 
 @Component({
@@ -10,30 +10,31 @@ import {MenuService} from '../../service/menu/menu.service';
 export class ContainerComponent implements OnInit {
 
   menus: Menu[];
-  currentNav:string;
-  currentMenu:string;
-  currentSubMenu:string;
+  currentNav: string;
+  currentMenu: string;
+  currentSubMenu: string;
 
-  constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService) {
+  }
 
   ngOnInit() {
     this.getMenus();
   }
 
-  getMenus():void {
+  getMenus(): void {
     this.menuService.getMenus()
-      .subscribe(menus =>this.menus = menus);
+      .subscribe(menus => this.menus = menus);
   }
 
-  getCurrentNav(nav:string):void{
+  getCurrentNav(nav: string): void {
     this.currentNav = nav;
   }
 
-  getCurrentMenu(menu:string):void{
+  getCurrentMenu(menu: string): void {
     this.currentMenu = menu;
   }
 
-  getCurrentSubMenu(subMenu:string):void{
+  getCurrentSubMenu(subMenu: string): void {
     this.currentSubMenu = subMenu;
   }
 }

@@ -10,7 +10,7 @@ export class Menu {
   perms: string;
   icon: string;
   enable: boolean;
-  submenu:Array<Menu>;
+  submenu: Array<Menu>;
 }
 
 

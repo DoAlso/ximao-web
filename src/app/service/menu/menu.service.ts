@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Menu} from '../../model/menu/Menu';
+import {Menu} from '../../model/menu';
 import { Observable, of } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
@@ -9,12 +9,12 @@ import {catchError, tap} from 'rxjs/operators';
 })
 export class MenuService {
 
-  private getMenusUrl = 'api/menus';
+  private getMenusApi = 'api/menus';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getMenus(): Observable<Menu[]> {
-    return this.http.get<Menu[]>(this.getMenusUrl)
+    return this.http.get<Menu[]>(this.getMenusApi)
       .pipe(
         catchError(this.handleError('getMenus', []))
       );
