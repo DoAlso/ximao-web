@@ -190,7 +190,7 @@ export class InMemoryMenuService implements InMemoryDbService {
           {
             menuId: 14,
             permissionId: 1,
-            menuName: '子菜单一',
+            menuName: '权限列表',
             parentId: 5,
             orderNum: 1,
             url: '',
@@ -204,21 +204,7 @@ export class InMemoryMenuService implements InMemoryDbService {
           {
             menuId: 15,
             permissionId: 1,
-            menuName: '子菜单二',
-            parentId: 5,
-            orderNum: 1,
-            url: '',
-            menuType: 'C',
-            visible: true,
-            perms: '',
-            icon: '',
-            enable: true,
-            submenu: []
-          },
-          {
-            menuId: 16,
-            permissionId: 1,
-            menuName: '子菜单三',
+            menuName: '新增权限',
             parentId: 5,
             orderNum: 1,
             url: '',

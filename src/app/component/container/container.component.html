@@ -1,30 +1,28 @@
 <nz-layout class="layout">
-  <nz-header>
+  <nz-header style="display: flex;align-items: center;justify-items: center;">
     <div class="logo"></div>
-    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-      <li nz-menu-item (click)="getCurrentNav('nav 1')">nav 1</li>
-      <li nz-menu-item (click)="getCurrentNav('nav 2')">nav 2</li>
-      <li nz-menu-item (click)="getCurrentNav('nav 3')">nav 3</li>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;flex: auto;">
+      <li nz-menu-item>nav 1</li>
+      <li nz-menu-item>nav 2</li>
+      <li nz-menu-item>nav 3</li>
     </ul>
+    <nz-avatar nzText="U" nzSize="large" style="color:#f56a00; background-color:#fde3cf;margin-left: 20px;"></nz-avatar>
   </nz-header>
   <nz-layout>
     <nz-sider [nzWidth]="200" style="background:#fff">
       <ul  nz-menu [nzMode]="'inline'" style="height:100%">
         <li nz-submenu *ngFor="let menu of menus">
-          <span title (click)="getCurrentMenu(menu.menuName)"><i nz-icon type="user"></i>{{menu.menuName}}</span>
+          <span title><i nz-icon type="user"></i>{{menu.menuName}}</span>
           <ul *ngFor="let menuItem of menu.submenu">
-            <li nz-menu-item (click)="getCurrentSubMenu(menuItem.menuName)">{{menuItem.menuName}}</li>
+            <li nz-menu-item>{{menuItem.menuName}}</li>
           </ul>
         </li>
       </ul>
     </nz-sider>
     <nz-layout style="padding:0 24px 24px">
-      <nz-breadcrumb style="margin:16px 0;">
-        <nz-breadcrumb-item>{{currentNav}}</nz-breadcrumb-item>
-        <nz-breadcrumb-item>{{currentMenu}}</nz-breadcrumb-item>
-        <nz-breadcrumb-item>{{currentSubMenu}}</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <nz-content style="background:#fff; padding: 24px; min-height: 280px;">Content</nz-content>
+      <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
+        <router-outlet></router-outlet>
+      </nz-content>
     </nz-layout>
   </nz-layout>
 </nz-layout>
