@@ -1,7 +1,7 @@
 import {Menu} from '../model/menu';
 import {InMemoryDbService} from 'angular-in-memory-web-api';
 
-export class InMemoryDataService implements InMemoryDbService {
+export class InMemoryMenuService implements InMemoryDbService {
   createDb() {
     const menus: Menu[] = [
       {
@@ -232,7 +232,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       }
     ];
-    return {menus};
+    return {getMenus: menus};
   }
 }
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../service/user/user.service';
-import {User} from '../../model/user';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NzMessageService} from 'ng-zorro-antd';
+import {Title} from '@angular/platform-browser';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {filter, map, mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,8 @@ import {NzMessageService} from 'ng-zorro-antd';
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
-  users: User[];
 
   ngOnInit(): void {
-    // 默认加载一次防止二次请求
-    this.login('XX', 'XX');
     this.validateForm = this.fb.group({
       userName: [ null, [ Validators.required ] ],
       password: [ null, [ Validators.required ] ],
@@ -24,7 +22,9 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-              private userService: UserService,
+              private titleService: Title,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
               private message: NzMessageService) {}
 
   submitForm(): void {
@@ -32,19 +32,16 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
-    this.login(this.validateForm.get('userName').value, this.validateForm.get('password').value);
-  }
-
-  login(account: string, password: string): void {
-     this.userService.getUserByAccount(account)
-       .subscribe(users => this.users = users);
+    if (this.validateForm.get('userName').value === 'admin' && this.validateForm.get('password').value === '123456') {
+      this.createMessage('success', 'Login Success!');
+      this.router.navigate(['home/']);
+    } else {
+      this.createMessage('error', 'Login Error!');
+    }
   }
 
   createMessage(type: string, message: string): void {
     this.message.create(type, message);
   }
-
-
-
 
 }

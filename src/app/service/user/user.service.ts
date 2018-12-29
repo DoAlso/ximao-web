@@ -9,7 +9,7 @@ import {catchError} from 'rxjs/operators';
 })
 export class UserService {
 
-  private getUsersApi = 'api/users';
+  private getUsersApi = 'api/getUsers';
 
   constructor(private http: HttpClient) { }
 

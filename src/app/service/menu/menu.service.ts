@@ -9,7 +9,7 @@ import {catchError, tap} from 'rxjs/operators';
 })
 export class MenuService {
 
-  private getMenusApi = 'api/menus';
+  private getMenusApi = 'api/getMenus';
 
   constructor(private http: HttpClient) { }
 
