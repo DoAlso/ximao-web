@@ -14,7 +14,7 @@ import {User} from '../../model/user';
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
-  users:User[];
+  users:User[] = [];
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       userName: [ null, [ Validators.required ] ],
@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
     const account = this.validateForm.get('userName').value;
     const password = this.validateForm.get('password').value;
     this.userService.login(account,password).subscribe(users => this.users =users);
-    if (this.validateForm.get('userName').value === 'admin' && this.validateForm.get('password').value === '123456') {
+    if(this.users.length === 0){
       this.createMessage('success', 'Login Success!');
       this.router.navigate(['home/']);
-    } else {
+    }else{
       this.createMessage('error', 'Login Error!');
     }
   }

@@ -14,10 +14,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(account: string, password:string):Observable<User[]> {
-    const params = new HttpParams();
-    params.set("account",account);
-    params.set("password",password);
-    return this.http.get<User[]>("http://192.168.1.29:8111/login",{params})
+    const login = `${this.getUsersApi}?account=${account}&password=${password}`;
+    return this.http.get<User[]>(login)
       .pipe(
         catchError(this.handleError('login', []))
       );

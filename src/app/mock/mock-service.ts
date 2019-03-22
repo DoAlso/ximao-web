@@ -1,8 +1,10 @@
 import {Menu} from '../model/menu';
 import {InMemoryDbService} from 'angular-in-memory-web-api';
+import {User} from '../model/user';
 
 export class InMemoryMenuService implements InMemoryDbService {
   createDb() {
+    //菜单数据
     const menus: Menu[] = [
       {
         menuId: 1,
@@ -218,7 +220,16 @@ export class InMemoryMenuService implements InMemoryDbService {
         ]
       }
     ];
-    return {getMenus: menus};
+    //用户数据
+    const users: User[] = [
+      {
+        userId: 1,
+        username: '胡亚曦',
+        account: 'admin',
+        password: '123456'
+      }
+    ];
+    return {getMenus: menus,getUsers: users};
   }
 }
 
