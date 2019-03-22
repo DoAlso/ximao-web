@@ -14,6 +14,7 @@ import {LoginComponent} from './component/login/login.component';
 import {AppRoutingModule} from './/app-routing.module';
 import {InMemoryUserService} from './mock/mock-user';
 import {InMemoryMenuService} from './mock/mock-menu';
+import { FilesComponent } from './component/files/files.component';
 
 
 registerLocaleData(en);
@@ -22,7 +23,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     ContainerComponent,
-    LoginComponent
+    LoginComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryMenuService, {dataEncapsulation: false}),
+    //HttpClientInMemoryWebApiModule.forRoot(InMemoryMenuService, {dataEncapsulation: false}),
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryUserService, {dataEncapsulation: false}),
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}],

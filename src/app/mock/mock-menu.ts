@@ -20,10 +20,10 @@ export class InMemoryMenuService implements InMemoryDbService {
           {
             menuId: 2,
             permissionId: 1,
-            menuName: '子菜单一',
+            menuName: '文件上传',
             parentId: 1,
             orderNum: 1,
-            url: '',
+            url: '/upload',
             menuType: 'C',
             visible: true,
             perms: '',

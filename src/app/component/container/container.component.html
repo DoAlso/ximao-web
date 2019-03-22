@@ -14,7 +14,9 @@
         <li nz-submenu *ngFor="let menu of menus">
           <span title><i nz-icon type="user"></i>{{menu.menuName}}</span>
           <ul *ngFor="let menuItem of menu.submenu">
-            <li nz-menu-item>{{menuItem.menuName}}</li>
+            <li nz-menu-item>
+              <a [routerLink]="menuItem.url">{{menuItem.menuName}}</a>
+            </li>
           </ul>
         </li>
       </ul>

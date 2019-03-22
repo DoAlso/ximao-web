@@ -1,0 +1,21 @@
+<nz-upload nzAction="http://192.168.1.29:8111/sampleUpload"
+           [nzCustomRequest]="customReq"
+           nzMultiple [nzRemove]="removeItem"
+           nzListType="picture">
+  <button nz-button>
+    <i nz-icon type="upload"></i><span>Upload</span>
+  </button>
+</nz-upload>
+<input nz-input placeholder="Basic usage" [(ngModel)]="faceSetName">
+<input nz-input placeholder="Basic usage" [(ngModel)]="faceBucketName">
+<input nz-input placeholder="Basic usage" [(ngModel)]="faceLabelId">
+<button nz-button nzType="primary" (click)="auxiliaryFace()">Primary</button>
+
+<br/>
+<nz-upload nzAction="http://192.168.1.29:8111/upload" [nzCustomRequest]="customBigReqV1" [nzMultiple]="true" [nzLimit]="1" nzName>
+  <button nz-button>
+    <i nz-icon type="upload"></i><span>UploadBig</span>
+  </button>
+</nz-upload>
+
+

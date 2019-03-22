@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {User} from '../../model/user';
 import {catchError} from 'rxjs/operators';
@@ -12,6 +12,16 @@ export class UserService {
   private getUsersApi = 'api/getUsers';
 
   constructor(private http: HttpClient) { }
+
+  login(account: string, password:string):Observable<User[]> {
+    const params = new HttpParams();
+    params.set("account",account);
+    params.set("password",password);
+    return this.http.get<User[]>("http://192.168.1.29:8111/login",{params})
+      .pipe(
+        catchError(this.handleError('login', []))
+      );
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.getUsersApi)
